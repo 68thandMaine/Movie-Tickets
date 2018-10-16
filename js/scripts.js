@@ -2,29 +2,39 @@ var movie = "";
 var time = "";
 var age = "";
 
-function Ticket(movie, time, age) {
+
+function Ticket(movie, time, age, ticket) {
   this.movie = movie;
   this.time = time;
   this.age = age;
+  this.ticket = ticket;
+
 };
+Ticket.prototype.ticketInfo = function(){
+  return this.movie + " " + this.time + " " + this.age;
+}
 
 Ticket.prototype.price = function(){
-  if (movie === 3 && age === 25 && time === 1){
-    alert ("Your movie will cost $14");
+  var moviePrice = 0;
+  if ((this.age > 10 && this.age < 65)&&(this.time===3)){
+    moviePrice+=14;
+   console.log(moviePrice);
   }
 
-  else if (age >= 65 || age <= 10){
-    alert ("Your Movie will cost $5");
+  else if (this.age >= 65 || this.age <= 10){
+    moviePrice+=5;
+    console.log(moviePrice);
   }
 
-  else if (age > 10 && age < 65){
-      alert ("Your movie will cost $10");
+  else if ((this.age > 10 && this.age < 65)&&(this.time===1 || this.time===2)){
+      moviePrice+=10;
+      console.log(moviePrice);
   }
 
   else {
     alert ("Try again");
   }
-
+  return moviePrice;
 };
 
 $(document).ready(function(){
@@ -40,6 +50,7 @@ $(document).ready(function(){
     var newTicket = new Ticket(movie, time, age);
     console.log(newTicket);
     newTicket.price();
+
   });
 
 });
