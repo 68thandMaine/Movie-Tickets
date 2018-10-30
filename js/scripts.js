@@ -7,7 +7,6 @@ function Ticket(movie, time, age, ticket) {
   this.movie = movie;
   this.time = time;
   this.age = age;
-  this.ticket = ticket;
 
 };
 Ticket.prototype.ticketInfo = function(){
